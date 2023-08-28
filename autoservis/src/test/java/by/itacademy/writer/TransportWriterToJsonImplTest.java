@@ -18,15 +18,15 @@ class TransportWriterToJsonImplTest {
     private File invalidFile;
     private File successFile;
     private TransportWriter writer;
-    private final static List<Transport> transportList = new ArrayList<>();
+    private final List<Transport> transportList = new ArrayList<>();
 
 
     @BeforeEach
     void prepare() {
         transportList.add(new Transport("auto", "BMW", 20));
         transportList.add(new Transport("bus", "Icarus", 30));
-        invalidFile = Path.of("invalid-transport.json").toFile();
-        successFile = Path.of("processed-transport.json").toFile();
+        invalidFile = Path.of("src", "test", "resources","invalid-transport.json").toFile();
+        successFile = Path.of("src", "test", "resources","processed-transport.json").toFile();
         writer = new TransportWriterToJsonImpl(invalidFile, successFile);
     }
 
@@ -39,7 +39,7 @@ class TransportWriterToJsonImplTest {
     @Test
     void test_writeSuccessTransport_success() throws WriterException {
         writer.writeSuccessTransport(transportList);
-        assertNotNull(Path.of("processed-transport.json").toFile(), "processed-transport.json is not exist");
+        assertNotNull(successFile, "processed-transport.json is not exist");
     }
 
     @Test

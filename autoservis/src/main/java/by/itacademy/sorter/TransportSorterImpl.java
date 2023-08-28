@@ -57,7 +57,7 @@ public class TransportSorterImpl implements TransportSorter {
                     listChoiseUser.add(number);
                     return number;
                 }
-            } catch (NumberFormatException e) {
+            } catch (final NumberFormatException e) {
                 System.err.println("Вы вели некорректное значение! повторите ввод");
             }
         }

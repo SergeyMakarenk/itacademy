@@ -15,7 +15,7 @@ public class TransportCheckerImpl implements TransportChecker {
     public Map<String, List<Transport>> checkTransport(List<Transport> listTransport, String success, String invalid) {
         final List<Transport> invalidTransportList = new ArrayList<>();
         final List<Transport> successTransportList = new ArrayList<>();
-        final Map<String, List<Transport>> mapListTransport = new HashMap<>();
+        final Map<String, List<Transport>> mapListTransport = new HashMap<>(2);
 
         for (Transport transport : listTransport) {
             if (PATTERN.matcher(transport.getModel()).matches()) {
