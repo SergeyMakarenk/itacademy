@@ -2,10 +2,9 @@ package by.itacademy.writer;
 
 import by.itacademy.transport.Transport;
 
+import java.io.File;
 import java.util.List;
 
 public interface TransportWriter {
-    void writeInvalidTransport(List<Transport> invalidTransportList) throws WriterException;
-
-    void writeSuccessTransport(List<Transport> successTransportList) throws WriterException;
+    void writeTransport(List<Transport> invalidTransportList, File file, String validTypeTransport) throws WriterException;
 }

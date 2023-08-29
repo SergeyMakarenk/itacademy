@@ -37,9 +37,9 @@ public final class Autoservis {
             final TransportSorter sorter = new TransportSorterImpl();
             sorter.sortReader(mapListTransport.get(SUCCESS));
 
-            final TransportWriter writer = new TransportWriterToJsonImpl(FILE_INVALID, FILE_SUCCESS);
-            writer.writeInvalidTransport(mapListTransport.get(INVALID));
-            writer.writeSuccessTransport(mapListTransport.get(SUCCESS));
+            final TransportWriter writer = new TransportWriterToJsonImpl();
+            writer.writeTransport(mapListTransport.get(INVALID), FILE_INVALID, INVALID);
+            writer.writeTransport(mapListTransport.get(SUCCESS), FILE_SUCCESS, SUCCESS);
 
         } catch (final Exception e) {
             System.err.println("Ошибка работы программы" + e.getMessage());
