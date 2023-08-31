@@ -1,6 +1,6 @@
 package by.itacademy.reader;
 
-import by.itacademy.parser.ParserFromString;
+import by.itacademy.parser.TransportFromParser;
 import by.itacademy.parser.TransportParserException;
 import by.itacademy.transport.Transport;
 
@@ -9,9 +9,9 @@ import java.util.List;
 
 public class TransportReaderImpl implements TransportReader {
     private final String fileTransport;
-    private final ParserFromString parser;
+    private final TransportFromParser parser;
 
-    public TransportReaderImpl(final String fileTransport, final ParserFromString parser) {
+    public TransportReaderImpl(final String fileTransport, final TransportFromParser parser) {
         this.fileTransport = fileTransport;
         this.parser = parser;
     }
@@ -28,12 +28,12 @@ public class TransportReaderImpl implements TransportReader {
             throw new ReaderException("File not exist " + fileTransport, e);
         } catch (final IOException e) {
             throw new ReaderException("Can't read file " + fileTransport, e);
-        } catch (TransportParserException e) {
+        } catch (final TransportParserException e) {
             throw new ReaderException("Can't parse content", e);
         }
     }
     private BufferedReader getReader() throws ReaderException {
-        final var in = getClass().getClassLoader().getResourceAsStream("transport.json");
+        final var in = getClass().getClassLoader().getResourceAsStream(fileTransport);
 
         if (in != null) {
             return new BufferedReader(new InputStreamReader(in));

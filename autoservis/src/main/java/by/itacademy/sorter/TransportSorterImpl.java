@@ -19,11 +19,11 @@ public class TransportSorterImpl implements TransportSorter {
 
         while (true) {
             System.out.println("""
-                    Р’С‹Р±РµСЂРµС‚Рµ РјРµС‚РѕРґ СЃРѕСЂС‚РёСЂРѕРІРєРё РІР°Р»РёРґРЅС‹С… РўРЎ:
-                    1 - РїРѕ С‚РёРїСѓ РўРЎ
-                    2 - РїРѕ РјРѕРґРµР»Рё
-                    3 - РїРѕ С†РµРЅРµ
-                    4 - РІС‹Р№С‚Рё РёР· СЂРµР¶РёРјР° СЃРѕСЂС‚РёСЂРѕРІРєРё СЃ Р·Р°РїРёСЃСЊСЋ РѕР±СЂР°Р±РѕС‚Р°РЅРЅС‹С… РґР°РЅРЅС‹С… РІ С„Р°Р№Р»С‹
+                    Выберете метод сортировки валидных ТС:
+                    1 - по типу ТС
+                    2 - по модели
+                    3 - по цене
+                    4 - выйти из режима сортировки с записью обработанных данных в файлы
                     """);
 
             final int choiceUser = checkChoiceUser(1, 4, listChoiseUser);
@@ -32,9 +32,8 @@ public class TransportSorterImpl implements TransportSorter {
                 case 1 -> sort(listTransport, new ComparatorType());
                 case 2 -> sort(listTransport, new ComparatorModel());
                 case 3 -> sort(listTransport, new ComparatorPrice());
-                case 4 -> {
-                    return;
-                }
+                case 4 -> {return;}
+                default -> System.out.println("Вы вышли за границы выбора. Повторите ввод");
             }
         }
     }
@@ -49,16 +48,16 @@ public class TransportSorterImpl implements TransportSorter {
                 final int number = Integer.parseInt(stringNumber);
 
                 if (number < start || number > end) {
-                    System.out.println("Р’С‹ РІС‹С€Р»Рё Р·Р° РіСЂР°РЅРёС†С‹ РІС‹Р±РѕСЂР°");
+                    System.out.println("Вы вышли за границы выбора");
                 } else if (listChoiseUser.contains(number)) {
-                    System.out.println("РўР°РєРѕР№ РјРµС‚РѕРґ СЃРѕСЂС‚РёСЂРѕРІРєРё СѓР¶Рµ РїСЂРёРјРµРЅРµРЅ СЂР°РЅРµРµ");
+                    System.out.println("Такой метод сортировки уже применен ранее");
                 } else {
-                    System.out.println("РњРµС‚РѕРґ СЃРѕСЂС‚РёСЂРѕРІРєРё РїСЂРёРЅСЏС‚");
+                    System.out.println("Метод сортировки принят");
                     listChoiseUser.add(number);
                     return number;
                 }
             } catch (final NumberFormatException e) {
-                System.err.println("Р’С‹ РІРµР»Рё РЅРµРєРѕСЂСЂРµРєС‚РЅРѕРµ Р·РЅР°С‡РµРЅРёРµ! РїРѕРІС‚РѕСЂРёС‚Рµ РІРІРѕРґ");
+                System.err.println("Вы вели некорректное значение! повторите ввод");
             }
         }
     }

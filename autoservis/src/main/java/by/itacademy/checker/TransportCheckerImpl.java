@@ -12,12 +12,12 @@ public class TransportCheckerImpl implements TransportChecker {
     private static final Pattern PATTERN = Pattern.compile("^[A-z]+[A-z-\\s0-9]+[A-z0-9]$");
 
     @Override
-    public Map<String, List<Transport>> checkTransport(List<Transport> listTransport, String success, String invalid) {
+    public Map<String, List<Transport>> checkTransport(final List<Transport> listTransport, final String successKey, final String invalidKey) {
         final List<Transport> invalidTransportList = new ArrayList<>();
         final List<Transport> successTransportList = new ArrayList<>();
         final Map<String, List<Transport>> mapListTransport = new HashMap<>(2);
 
-        for (Transport transport : listTransport) {
+        for (final Transport transport : listTransport) {
             if (PATTERN.matcher(transport.getModel()).matches()) {
                 successTransportList.add(transport);
             } else {
@@ -25,8 +25,8 @@ public class TransportCheckerImpl implements TransportChecker {
             }
         }
 
-        mapListTransport.put(success, successTransportList);
-        mapListTransport.put(invalid, invalidTransportList);
+        mapListTransport.put(successKey, successTransportList);
+        mapListTransport.put(invalidKey, invalidTransportList);
 
         return mapListTransport;
     }

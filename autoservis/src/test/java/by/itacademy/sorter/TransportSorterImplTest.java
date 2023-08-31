@@ -3,7 +3,6 @@ package by.itacademy.sorter;
 import by.itacademy.transport.Transport;
 import org.junit.jupiter.api.Test;
 
-import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class TransportSorterImplTest {
 
     @Test
-    void test_sortArrayList_withComparator_success(){
+    void test_sortArrayList_withComparator_success() {
         final TransportSorter sorter = new TransportSorterImpl();
 
         final List<Transport> transportList = new ArrayList<>();
@@ -23,6 +22,8 @@ class TransportSorterImplTest {
         transportList.add(autoHondaTen);
 
         sorter.sort(transportList, new ComparatorType());
+
         assertEquals(transportList.get(0), autoHondaTen);
+        assertEquals(transportList.get(1), bikeAudiTwenty);
     }
 }

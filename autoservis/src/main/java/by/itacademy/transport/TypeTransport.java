@@ -7,7 +7,7 @@ public enum TypeTransport {
 
     private final Integer price;
 
-    TypeTransport(Integer price){
+    TypeTransport(final Integer price){
         this.price = price;
     }
 

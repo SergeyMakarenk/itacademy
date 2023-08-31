@@ -9,7 +9,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TransportParserFromStringImpl implements ParserFromString {
+public class TransportFromParserImpl implements TransportFromParser {
     @Override
     public List<Transport> parseStringToListTransport(final String content) throws TransportParserException {
         try {

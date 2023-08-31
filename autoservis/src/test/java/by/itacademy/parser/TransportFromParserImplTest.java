@@ -8,7 +8,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class TransportParserFromStringImplTest {
+class TransportFromParserImplTest {
 
     @Test
     void test_parseStringToListTransport_success() throws TransportParserException {
@@ -18,9 +18,10 @@ class TransportParserFromStringImplTest {
 
         final String content = " [ { \"type\": \"bike\", \"model\": \"Ninja ZX-14\"}, { \"type\": \"auto\", \"model\": \"Audi Q7\"}] ";
 
-        final ParserFromString parser = new TransportParserFromStringImpl();
+        final TransportFromParser parser = new TransportFromParserImpl();
 
         final List<Transport> listTransportExpected = parser.parseStringToListTransport(content);
+
         assertNotNull(listTransportExpected, "array transport is null");
         assertEquals(listTransportExpected, listTransportActual);
     }
@@ -29,9 +30,10 @@ class TransportParserFromStringImplTest {
     void test_parseStringToListTransport_usingJsonArray_wrongKey_throwsException() {
         final String content = " [ { \"type\": \"bike\", \"modell\": \"Ninja ZX-14\"}, { \"type\": \"auto\", \"model\": \"Audi Q7\"}] ";
 
-        final ParserFromString parser = new TransportParserFromStringImpl();
+        final TransportFromParser parser = new TransportFromParserImpl();
 
         final Exception transportParserException = assertThrows(TransportParserException.class, () -> parser.parseStringToListTransport(content));
+
         assertNotNull(transportParserException, "transportParserException is null");
         assertEquals("Failed to parse from JSON to String", transportParserException.getMessage());
     }
