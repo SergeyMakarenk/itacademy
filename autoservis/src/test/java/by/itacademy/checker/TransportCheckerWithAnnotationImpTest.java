@@ -2,21 +2,22 @@ package by.itacademy.checker;
 
 import by.itacademy.transport.Transport;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class TransportCheckerImplTest {
-
+class TransportCheckerWithAnnotationImpTest {
     @Test
-    void test_checkTransport_success(){
+    void test_checkTransport_success() throws TransportCheckerException {
         final List<Transport> allTransportList = new ArrayList<>();
         final ArrayList<Transport> successTransportList = new ArrayList<>();
         final ArrayList<Transport> invalidTransportList = new ArrayList<>();
 
-        final TransportChecker checker = new TransportCheckerImpl();
+        final TransportChecker checker = new TransportCheckerWithAnnotationImp();
 
         final Transport successTransport = new Transport("bus", "Transporter T5", 30);
         final Transport invalidTransport = new Transport("bike", "Ninja **", 10);

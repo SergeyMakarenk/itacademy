@@ -1,9 +1,14 @@
 package by.itacademy.transport;
 
+import by.itacademy.checker.Validation;
+
 import java.util.Objects;
 
 public class Transport {
+    private static final String PATTERN = "^[A-z]+[A-z-\\s0-9]+[A-z0-9]$";
     private final String type;
+
+    @Validation(pattern = PATTERN)
     private final String model;
     private final Integer price;
 

@@ -6,11 +6,13 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
+import java.util.function.Function;
 
 public class TransportSorterImpl implements TransportSorter {
+
     @Override
-    public void sort(final List<Transport> list, final Comparator<Transport> comparator) {
-        list.sort(comparator);
+    public <T extends Comparable<T>> void sort(final List<Transport> listTransport, final Function<Transport, T> keyExtractor) {
+         listTransport.sort(Comparator.comparing(keyExtractor));
     }
 
     @Override
@@ -29,9 +31,9 @@ public class TransportSorterImpl implements TransportSorter {
             final int choiceUser = checkChoiceUser(1, 4, listChoiseUser);
 
             switch (choiceUser) {
-                case 1 -> sort(listTransport, new ComparatorType());
-                case 2 -> sort(listTransport, new ComparatorModel());
-                case 3 -> sort(listTransport, new ComparatorPrice());
+                case 1 -> sort(listTransport, Transport::getType);
+                case 2 -> sort(listTransport, Transport::getModel);
+                case 3 -> sort(listTransport, Transport::getPrice);
                 case 4 -> {return;}
                 default -> System.out.println("Вы вышли за границы выбора. Повторите ввод");
             }

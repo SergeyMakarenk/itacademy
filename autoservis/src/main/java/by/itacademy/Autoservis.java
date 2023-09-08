@@ -1,7 +1,7 @@
 package by.itacademy;
 
 import by.itacademy.checker.TransportChecker;
-import by.itacademy.checker.TransportCheckerImpl;
+import by.itacademy.checker.TransportCheckerWithAnnotationImp;
 import by.itacademy.parser.TransportFromParserImpl;
 import by.itacademy.parser.TransportFromParser;
 import by.itacademy.reader.TransportReader;
@@ -31,7 +31,7 @@ public final class Autoservis {
 
             final List<Transport> transportList = reader.readTransport();
 
-            final TransportChecker checker = new TransportCheckerImpl();
+            final TransportChecker checker = new TransportCheckerWithAnnotationImp();
             final Map<String, List<Transport>> mapListTransport = checker.checkTransport(transportList, SUCCESS_KEY, INVALID_KEY);
 
             final TransportSorter sorter = new TransportSorterImpl();
@@ -45,7 +45,6 @@ public final class Autoservis {
             System.err.println("Ошибка работы программы" + e.getMessage());
             e.printStackTrace();
         }
-
         System.out.println("Завершение программы Автосервис");
     }
 

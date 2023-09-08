@@ -21,7 +21,7 @@ class TransportSorterImplTest {
         transportList.add(bikeAudiTwenty);
         transportList.add(autoHondaTen);
 
-        sorter.sort(transportList, new ComparatorType());
+        sorter.sort(transportList, Transport::getType);
 
         assertEquals(transportList.get(0), autoHondaTen);
         assertEquals(transportList.get(1), bikeAudiTwenty);
