@@ -8,7 +8,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class TransportFromParserImplTest {
+class TransportFromParserWithAnnotationImplTest {
 
     @Test
     void test_parseStringToListTransport_success() throws TransportParserException {
@@ -18,7 +18,7 @@ class TransportFromParserImplTest {
 
         final String content = " [ { \"type\": \"bike\", \"model\": \"Ninja ZX-14\"}, { \"type\": \"auto\", \"model\": \"Audi Q7\"}] ";
 
-        final TransportFromParser parser = new TransportFromParserImpl();
+        final TransportFromParser parser = new TransportFromParserWithAnnotationImpl();
 
         final List<Transport> listTransportExpected = parser.parseStringToListTransport(content);
 
@@ -30,7 +30,7 @@ class TransportFromParserImplTest {
     void test_parseStringToListTransport_usingJsonArray_wrongKey_throwsException() {
         final String content = " [ { \"type\": \"bike\", \"modell\": \"Ninja ZX-14\"}, { \"type\": \"auto\", \"model\": \"Audi Q7\"}] ";
 
-        final TransportFromParser parser = new TransportFromParserImpl();
+        final TransportFromParser parser = new TransportFromParserWithAnnotationImpl();
 
         final Exception transportParserException = assertThrows(TransportParserException.class, () -> parser.parseStringToListTransport(content));
 

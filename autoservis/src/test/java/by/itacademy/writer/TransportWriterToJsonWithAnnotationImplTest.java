@@ -14,12 +14,12 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class TransportWriterToJsonImplTest {
+class TransportWriterToJsonWithAnnotationImplTest {
     private final File invalidFile = Path.of("src", "test", "resources", "invalid-transport.json").toFile();
     private final File invalidFileActual = Path.of("src", "test", "resources", "invalid-transport-actual.json").toFile();
     private final File successFile = Path.of("src", "test", "resources", "processed-transport.json").toFile();
     private final File successFileActual = Path.of("src", "test", "resources", "processed-transport-actual.json").toFile();
-    private final TransportWriter writer = new TransportWriterToJsonImpl();
+    private final TransportWriter writer = new TransportWriterToJsonWithAnnotationImpl();
     private final List<Transport> transportList = new ArrayList<>();
 
 

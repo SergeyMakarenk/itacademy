@@ -2,14 +2,14 @@ package by.itacademy;
 
 import by.itacademy.checker.TransportChecker;
 import by.itacademy.checker.TransportCheckerWithAnnotationImp;
-import by.itacademy.parser.TransportFromParserImpl;
+import by.itacademy.parser.TransportFromParserWithAnnotationImpl;
 import by.itacademy.parser.TransportFromParser;
 import by.itacademy.reader.TransportReader;
 import by.itacademy.reader.TransportReaderImpl;
 import by.itacademy.sorter.*;
 import by.itacademy.transport.Transport;
 import by.itacademy.writer.TransportWriter;
-import by.itacademy.writer.TransportWriterToJsonImpl;
+import by.itacademy.writer.TransportWriterToJsonWithAnnotationImpl;
 
 import java.io.*;
 import java.nio.file.Path;
@@ -17,8 +17,8 @@ import java.util.*;
 
 public final class Autoservis {
     private static final String FILE = "transport.json";
-    private static final File FILE_INVALID = Path.of( "invalid-transport.json").toFile();
-    private static final File FILE_SUCCESS = Path.of( "processed-transport.json").toFile();
+    private static final File FILE_INVALID = Path.of("invalid-transport.json").toFile();
+    private static final File FILE_SUCCESS = Path.of("processed-transport.json").toFile();
     private static final String SUCCESS_KEY = "success";
     private static final String INVALID_KEY = "invalid";
 
@@ -26,7 +26,7 @@ public final class Autoservis {
         System.out.println("Старт программы Автосервис");
 
         try {
-            final TransportFromParser parser = new TransportFromParserImpl();
+            final TransportFromParser parser = new TransportFromParserWithAnnotationImpl();
             final TransportReader reader = new TransportReaderImpl(FILE, parser);
 
             final List<Transport> transportList = reader.readTransport();
@@ -37,7 +37,7 @@ public final class Autoservis {
             final TransportSorter sorter = new TransportSorterImpl();
             sorter.sortReader(mapListTransport.get(SUCCESS_KEY));
 
-            final TransportWriter writer = new TransportWriterToJsonImpl();
+            final TransportWriter writer = new TransportWriterToJsonWithAnnotationImpl();
             writer.writeTransport(mapListTransport.get(INVALID_KEY), FILE_INVALID, INVALID_KEY);
             writer.writeTransport(mapListTransport.get(SUCCESS_KEY), FILE_SUCCESS, SUCCESS_KEY);
 

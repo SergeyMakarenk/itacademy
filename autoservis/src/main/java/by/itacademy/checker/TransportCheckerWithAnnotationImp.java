@@ -1,5 +1,6 @@
 package by.itacademy.checker;
 
+import by.itacademy.annotations.Validation;
 import by.itacademy.transport.Transport;
 
 import java.lang.annotation.Annotation;

@@ -2,7 +2,7 @@ package by.itacademy.reader;
 
 import by.itacademy.parser.TransportFromParser;
 import by.itacademy.parser.TransportParserException;
-import by.itacademy.parser.TransportFromParserImpl;
+import by.itacademy.parser.TransportFromParserWithAnnotationImpl;
 import by.itacademy.transport.Transport;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
@@ -28,7 +28,7 @@ class TransportReaderImplTest {
 
     @BeforeEach
     void prepare() {
-        parser = Mockito.mock(TransportFromParserImpl.class);
+        parser = Mockito.mock(TransportFromParserWithAnnotationImpl.class);
         reader = new TransportReaderImpl(FILE, parser);
     }
 
