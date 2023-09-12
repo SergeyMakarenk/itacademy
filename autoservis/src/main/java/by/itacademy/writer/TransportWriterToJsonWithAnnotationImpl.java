@@ -1,7 +1,7 @@
 package by.itacademy.writer;
 
-import by.itacademy.annotations.JsonTransportConverter;
-import by.itacademy.annotations.SuccessKey;
+import by.itacademy.annotations.JsonTransportConvertMarker;
+import by.itacademy.annotations.WriteFieldMarker;
 import by.itacademy.transport.Transport;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -32,20 +32,20 @@ public class TransportWriterToJsonWithAnnotationImpl implements TransportWriter 
         }
     }
 
-    private <T> JSONObject convertTransportToJson(final T transport, final String key) throws WriterException {
+    private JSONObject convertTransportToJson(final Transport transport, final String key) throws WriterException {
         final JSONObject jsonObject = new JSONObject();
         try {
             for (final Field field : transport.getClass().getDeclaredFields()) {
                 for (final Annotation annotation : field.getDeclaredAnnotations()) {
 
-                    if (annotation instanceof JsonTransportConverter) {
+                    if (annotation instanceof JsonTransportConvertMarker) {
                         field.setAccessible(true);
 
                         final String fieldName = field.getName();
                         final Object fieldValue = field.get(transport);
                         jsonObject.put(fieldName, fieldValue);
                     }
-                    if (annotation instanceof SuccessKey) {
+                    if (annotation instanceof WriteFieldMarker) {
                         field.setAccessible(true);
 
                         if (key.equals("success")) {

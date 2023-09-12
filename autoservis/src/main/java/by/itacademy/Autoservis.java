@@ -2,8 +2,8 @@ package by.itacademy;
 
 import by.itacademy.checker.TransportChecker;
 import by.itacademy.checker.TransportCheckerWithAnnotationImp;
-import by.itacademy.parser.TransportFromParserWithAnnotationImpl;
-import by.itacademy.parser.TransportFromParser;
+import by.itacademy.parser.TransportParserWithAnnotationImpl;
+import by.itacademy.parser.TransportParser;
 import by.itacademy.reader.TransportReader;
 import by.itacademy.reader.TransportReaderImpl;
 import by.itacademy.sorter.*;
@@ -23,10 +23,10 @@ public final class Autoservis {
     private static final String INVALID_KEY = "invalid";
 
     public static void run() {
-        System.out.println("Старт программы Автосервис");
+        System.out.println("РЎС‚Р°СЂС‚ РїСЂРѕРіСЂР°РјРјС‹ AutoservisApplication");
 
         try {
-            final TransportFromParser parser = new TransportFromParserWithAnnotationImpl();
+            final TransportParser parser = new TransportParserWithAnnotationImpl();
             final TransportReader reader = new TransportReaderImpl(FILE, parser);
 
             final List<Transport> transportList = reader.readTransport();
@@ -42,10 +42,10 @@ public final class Autoservis {
             writer.writeTransport(mapListTransport.get(SUCCESS_KEY), FILE_SUCCESS, SUCCESS_KEY);
 
         } catch (final Exception e) {
-            System.err.println("Ошибка работы программы" + e.getMessage());
+            System.err.println("РѕС€РёР±РєР° РІС‹С‹РїРѕР»РЅРµРЅРёСЏ РїСЂРѕРіСЂР°РјРјС‹" + e.getMessage());
             e.printStackTrace();
         }
-        System.out.println("Завершение программы Автосервис");
+        System.out.println("РѕРєРѕРЅС‡Р°РЅРёРµ СЂР°Р±РѕС‚С‹ РїСЂРѕРіСЂР°РјРјС‹");
     }
 
     private Autoservis() {

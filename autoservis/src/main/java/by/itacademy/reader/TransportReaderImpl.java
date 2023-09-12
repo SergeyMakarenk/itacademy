@@ -1,6 +1,6 @@
 package by.itacademy.reader;
 
-import by.itacademy.parser.TransportFromParser;
+import by.itacademy.parser.TransportParser;
 import by.itacademy.parser.TransportParserException;
 import by.itacademy.transport.Transport;
 
@@ -9,9 +9,9 @@ import java.util.List;
 
 public class TransportReaderImpl implements TransportReader {
     private final String fileTransport;
-    private final TransportFromParser parser;
+    private final TransportParser parser;
 
-    public TransportReaderImpl(final String fileTransport, final TransportFromParser parser) {
+    public TransportReaderImpl(final String fileTransport, final TransportParser parser) {
         this.fileTransport = fileTransport;
         this.parser = parser;
     }

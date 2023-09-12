@@ -1,7 +1,7 @@
 package by.itacademy.transport;
 
-import by.itacademy.annotations.JsonTransportConverter;
-import by.itacademy.annotations.SuccessKey;
+import by.itacademy.annotations.JsonTransportConvertMarker;
+import by.itacademy.annotations.WriteFieldMarker;
 import by.itacademy.annotations.Validation;
 
 import java.util.Objects;
@@ -9,16 +9,15 @@ import java.util.Objects;
 public class Transport {
     private static final String PATTERN = "^[A-z]+[A-z-\\s0-9]+[A-z0-9]$";
 
-
-    @JsonTransportConverter()
+    @JsonTransportConvertMarker
     private String type;
 
     @Validation(pattern = PATTERN)
-    @JsonTransportConverter()
+    @JsonTransportConvertMarker
     private String model;
 
-    @SuccessKey
-    private  Integer price;
+    @WriteFieldMarker
+    private Integer price;
 
     public Integer getPrice() {
         return price;
@@ -47,13 +46,17 @@ public class Transport {
 
     @Override
     public String toString() {
-        return "Тип ТС:  " + type + ", модель: " + model+ ", стоимость диагностики - " + price;
+        return "Тип ТС:  " + type + ", модель: " + model + ", стоимость диагностики - " + price;
     }
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         Transport transport = (Transport) o;
         return Objects.equals(type, transport.type) && Objects.equals(model, transport.model) && Objects.equals(price, transport.price);
     }

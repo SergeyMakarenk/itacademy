@@ -1,8 +1,8 @@
 package by.itacademy.reader;
 
-import by.itacademy.parser.TransportFromParser;
+import by.itacademy.parser.TransportParser;
 import by.itacademy.parser.TransportParserException;
-import by.itacademy.parser.TransportFromParserWithAnnotationImpl;
+import by.itacademy.parser.TransportParserWithAnnotationImpl;
 import by.itacademy.transport.Transport;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
@@ -22,13 +22,13 @@ class TransportReaderImplTest {
     private static final String CONTENT = "[  {    \"type\": \"bike\",    \"model\": \"Ninja ZX-14\"  },  {    \"type\": \"auto\",    \"model\": \"Audi Q7\"  }  ]";
     private static final String FILE = "transport-test.json";
     @Mock
-    private TransportFromParser parser;
+    private TransportParser parser;
     private TransportReader reader;
 
 
     @BeforeEach
     void prepare() {
-        parser = Mockito.mock(TransportFromParserWithAnnotationImpl.class);
+        parser = Mockito.mock(TransportParserWithAnnotationImpl.class);
         reader = new TransportReaderImpl(FILE, parser);
     }
 

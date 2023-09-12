@@ -17,7 +17,8 @@ public class TransportCheckerWithAnnotationImp implements TransportChecker {
     @Override
     public Map<String, List<Transport>> checkTransport(
             final List<Transport> listTransport,
-            final String successKey, final String invalidKey
+            final String successKey,
+            final String invalidKey
     ) throws TransportCheckerException {
 
         final List<Transport> invalidTransportList = new ArrayList<>();
@@ -28,7 +29,7 @@ public class TransportCheckerWithAnnotationImp implements TransportChecker {
             boolean isValidTransport = false;
 
             for (final Field field : transport.getClass().getDeclaredFields()) {
-                isValidTransport = validationTransport(field, transport);
+                isValidTransport = workWithAnnotation(field, transport);
                 if (isValidTransport) {
                     successTransportList.add(transport);
                     break;
@@ -45,7 +46,7 @@ public class TransportCheckerWithAnnotationImp implements TransportChecker {
         return mapListTransport;
     }
 
-    private boolean validationTransport(final Field field, final Transport transport) throws TransportCheckerException {
+    private boolean workWithAnnotation(final Field field, final Transport transport) throws TransportCheckerException {
         for (final Annotation annotation : field.getDeclaredAnnotations()) {
 
             if (!(annotation instanceof Validation)) {
