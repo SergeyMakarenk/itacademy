@@ -3,15 +3,13 @@ package by.itacademy.reader;
 import by.itacademy.parser.TransportParser;
 import by.itacademy.parser.TransportParserException;
 import by.itacademy.parser.TransportParserWithAnnotationImpl;
-import by.itacademy.transport.Transport;
+import by.itacademy.Transport;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.junit.jupiter.MockitoExtension;
+
 
 import java.util.ArrayList;
 import java.util.List;
