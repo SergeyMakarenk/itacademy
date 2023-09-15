@@ -10,6 +10,7 @@
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
+
 # Package Files #
 *.jar
 *.war
@@ -33,6 +34,10 @@ target/
 *.iml
 *.ipr
 .idea/
+autoservis/
+untitled/
+ServletApp/
+
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
