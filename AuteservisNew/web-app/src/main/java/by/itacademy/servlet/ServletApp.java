@@ -56,7 +56,7 @@ public class ServletApp extends HttpServlet {
                     .reduce("", String::concat);
         }
         final String nameSorting = req.getParameter("sorting");
-
+        
         mapTransports = convertContentBodyToMapTransports(requestBody, nameSorting);
 
         resp.setContentType("text/html");
