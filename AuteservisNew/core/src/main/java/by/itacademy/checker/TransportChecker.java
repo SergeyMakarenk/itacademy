@@ -1,6 +1,5 @@
 package by.itacademy.checker;
 
-
 import by.itacademy.Transport;
 
 import java.util.List;

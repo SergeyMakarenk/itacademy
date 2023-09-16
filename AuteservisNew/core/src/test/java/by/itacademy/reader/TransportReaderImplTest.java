@@ -10,22 +10,25 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
-
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
 class TransportReaderImplTest {
 
     private static final String CONTENT = "[  {    \"type\": \"bike\",    \"model\": \"Ninja ZX-14\"  },  {    \"type\": \"auto\",    \"model\": \"Audi Q7\"  }]";
-    private static final String FILE = "transport-test.json";
     private TransportParser parser;
     private TransportReader reader;
-
 
     @BeforeEach
     void prepare() {
         parser = Mockito.mock(TransportParserWithAnnotationImpl.class);
-        reader = new TransportReaderImpl(FILE, parser);
+        InputStream inputStream = new ByteArrayInputStream(CONTENT.getBytes());
+        InputStreamReader in = new InputStreamReader(inputStream, StandardCharsets.UTF_8);
+        reader = new TransportReaderImpl(in, parser);
     }
 
     @AfterEach
