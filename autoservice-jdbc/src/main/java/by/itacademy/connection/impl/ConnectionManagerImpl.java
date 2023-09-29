@@ -12,11 +12,11 @@ import java.util.Properties;
 
 import static by.itacademy.util.Constants.*;
 
-public  class ConnectionManagerImpl implements ConnectionManager {
+public class ConnectionManagerImpl implements ConnectionManager {
 
     @Override
-    public Connection open(final String propertyFile) throws IOException, SQLException {
-        final Properties properties = getProperties(propertyFile);
+    public Connection open() throws IOException, SQLException {
+        final Properties properties = getProperties();
 
         return DriverManager.getConnection(
                 properties.getProperty(URL),
@@ -25,8 +25,8 @@ public  class ConnectionManagerImpl implements ConnectionManager {
         );
     }
 
-    private Properties getProperties(final String propertyFile) throws IOException {
-        try (final InputStream stream = JdbcApplication.class.getClassLoader().getResourceAsStream(propertyFile)) {
+    private static Properties getProperties() throws IOException {
+        try (final InputStream stream = JdbcApplication.class.getClassLoader().getResourceAsStream(PROPERTY_FILE)) {
             final Properties properties = new Properties();
             properties.load(stream);
 
